@@ -1,29 +1,31 @@
 import { FiHeart } from "react-icons/fi";
-import { AiOutlineShoppingCart, AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import logo from "../assets/logo.png";
 import "./Nav.css";
 
 const Nav = ({ handleInputChange, query }) => {
   return (
-    <nav>
-      <div className="nav-container">
+    <nav className="navbar">
+      {/* Left: Logo */}
+      <div className="nav-left">
+        <img src={logo} alt="logo" className="logo" />
+      </div>
+
+      {/* Center: Search */}
+      <div className="nav-center">
         <input
-          className="search-input"
           type="text"
-          onChange={handleInputChange}
-          value={query}
           placeholder="Enter your search shoes."
+          value={query}
+          onChange={handleInputChange}
+          className="search-input"
         />
       </div>
-      <div className="profile-container">
-        <a href="#">
-          <FiHeart className="nav-icons" />
-        </a>
-        <a href="">
-          <AiOutlineShoppingCart className="nav-icons" />
-        </a>
-        <a href="">
-          <AiOutlineUserAdd className="nav-icons" />
-        </a>
+
+      {/* Right: Wishlist / Profile */}
+      <div className="nav-right">
+        <FiHeart className="nav-icon" />
+        <AiOutlineUserAdd className="nav-icon" />
       </div>
     </nav>
   );
