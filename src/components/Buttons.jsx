@@ -1,7 +1,9 @@
-import React from "react";
-
-const Buttons = () => {
-  return <div>Buttons</div>;
+const Button = ({ onClickHandler, value, title }) => {
+  return (
+    <button onClick={onClickHandler} value={value} className="btns">
+      {title}
+    </button>
+  );
 };
 
-export default Buttons;
+export default Button;
