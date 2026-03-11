@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
-import products from "./db/data";
+import products from "./database/data";
 import Recommended from "./Recommended/Recommended";
 import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
@@ -18,9 +18,8 @@ function App() {
     setQuery(event.target.value);
   };
 
-  const filteredItems = products.filter(
-    (product) =>
-      product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1,
+  const filteredItems = products.filter((product) =>
+    product.title.toLowerCase().includes(query.toLowerCase()),
   );
 
   // ----------- Radio Filtering -----------
@@ -33,8 +32,8 @@ function App() {
     setSelectedCategory(event.target.value);
   };
 
-  function filteredData(products, selected, query) {
-    let filteredProducts = products;
+  function filteredData(data, selected, query) {
+    let filteredProducts = data;
 
     // Filtering Input Items
     if (query) {
@@ -56,7 +55,7 @@ function App() {
     return filteredProducts.map(
       ({ img, title, star, reviews, prevPrice, newPrice }) => (
         <Card
-          key={Math.random()}
+          key={title}
           img={img}
           title={title}
           star={star}
